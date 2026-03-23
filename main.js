@@ -26,25 +26,36 @@ const elements = {
   authInput: document.querySelector('#book-auth'),
   pagesInput: document.querySelector('#book-pages'),
   statusCheck: document.querySelector('#book-status'),
+}
 
+Book.prototype = {
+  toggleStatus() {
+    if (this.status === 'read') {
+      this.status = 'not read'
+    } else {
+      this.status = 'read'
+    }
+  }
 }
 
 function displayBook() {
+  elements.container.innerHTML = ''
+
   for (let book of myLibrary) {
   const card = document.createElement('div')
   card.classList.add('card')
+  card.dataset.id = `${book.id}`
 
   card.innerHTML = `
     <h1>${book.title}</h1>
     <p>author: ${book.auth}</p>
     <p>pages: ${book.pages}</p>
-    <p>status: ${book.status}</p>
+    <p class='status-display'>status: ${book.status}</p>
     <button class='remove-book'>Remove</button>
+    <button class='change-status'>Change status</button>
   `
 
   elements.container.appendChild(card)
-
-  myLibrary.pop()
   }
 }
 
@@ -61,6 +72,17 @@ document.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('remove-book')) {
-    e.target.closest('.card').remove()
+    const id = e.target.closest('.card').dataset.id
+    const index = myLibrary.findIndex(b => b.id === id)
+    myLibrary.splice(index, 1)
+    displayBook()
+  }
+
+  if (e.target.classList.contains('change-status')) {
+    const id = e.target.closest('.card').dataset.id
+    const index = myLibrary.findIndex(b => b.id === id)
+
+    myLibrary[index].toggleStatus()
+    displayBook()
   }
 })
