@@ -10,9 +10,28 @@
 
   <div class='header'>
     <h1 class='title'>Librafy</h1>
+    <button class="new-book">add book</button>
   </div>
 
   <div class="container"></div>
+
+  <form action="" class='hidden'>
+    <p class='title'>Add a new book to your library</p>
+
+    <label for="book-title">Title</label>
+    <input type="text" id='book-title' name='book-title' required>
+
+    <label for="book-auth">Author</label>
+    <input type="text" id='book-auth' name='book-auth' required>
+
+    <label for="book-pages">Pages</label>
+    <input type="number" id='book-pages' name='book-pages' required>
+
+    <label for="book-status">Have you read the book?</label>
+    <input type="checkbox" id='book-status' name='book-status'>
+
+    <button class="book-submit">Add book</button>
+  </form>
 
   <script src='main.js'></script>
 </body>
