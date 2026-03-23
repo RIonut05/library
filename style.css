@@ -1,7 +1,227 @@
+:root {
+  --black: #000000;
+  --white: #fafafa;
+  --blue-500: #4837ff;
+  --blue-800: #2500da;
+  --blue-950: #10007a;
+  --red-400: #ff4949;
+  --red-500: #ff1111;
+  --red-800: #be0000;
+  --green-400: #2dfb5e;
+  --green-500: #02e539;
+  --green-700: #009926;
+
+  --radius: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: 100vh;
+  font-family: 'Lato', sans-serif;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1rem;
+}
+
+.header > .logo {
+  margin-right: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo > h1 {
+  font-weight: 800;
+}
+
+.logo > svg {
+  width: 2rem;
+  height: 4rem;
+  color: var(--blue-500);
+}
+
+.header > button {
+  border: none;
+  border-radius: var(--radius);
+  color: var(--white);
+  background: var(--blue-500);
+  padding: 10px;
+  box-shadow: 0px 0px 10px #2500da;
+}
+
+.new-book:hover {
+  background-color: var(--blue-800);
+  box-shadow: 0px 0px 13px #2500da;
+}
+
+.new-book:active {
+  background-color: var(--blue-950);
+}
+
 form {
-  border: 2px solid black;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--black);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 1.4rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  z-index: 1000;
+  background-color: var(--white);
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px
+}
+
+form > p {
+  align-self: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+input[type='text'], input[type='number'] {
+  outline: none;
+  border: 1px solid var(--blue-500);
+  border-radius: var(--radius);
+  padding: 5px;
+  font-size: 1rem;
+}
+
+input[type='text']:focus, input[type='number']:focus {
+  border: 1px solid var(--blue-950);
+  box-shadow: 0px 0px 4px var(--blue-950);
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0; 
+}
+
+label {
+  font-weight: 600;
+}
+
+.book-submit {
+  border: none;
+  background-color: var(--blue-500);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 0px 0px 10px #2500da;
+}
+
+.book-submit:hover {
+  background-color: var(--blue-800);
+  box-shadow: 0px 0px 13px #2500da
+}
+
+.book-submit:active {
+  background-color: var(--blue-950);
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
 }
 
 .hidden {
   display: none;
+}
+
+.card {
+  background-color: var(--black);
+  color: var(--white);
+  z-index: 1;
+  height: fit-content;
+  width: 160%;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-rows: auto;
+  border-radius: var(--radius);
+  gap: 1rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 150px));
+  grid-template-rows: repeat(auto, 50px);
+  gap: 7rem;
+  padding: 1rem;
+  height: fit-content;
+  width: 100%;
+}
+
+.card > h1 {
+  justify-self: center;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.card > p {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.remove-book, .change-status {
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.remove-book {
+  background-color: var(--red-400);
+  box-shadow: 0px 0px 5px var(--red-500);
+}
+
+.remove-book:hover {
+  background-color: var(--red-500);
+  box-shadow: 0px 0px 13px var(--red-500);
+}
+
+.remove-book:active {
+  background-color: var(--red-800);
+}
+
+.change-status {
+  background-color: var(--green-400);
+  box-shadow: 0px 0px 5px var(--green-500);
+}
+
+.change-status:hover {
+  background-color: var(--green-500);
+  box-shadow: 0px 0px 13px var(--green-500);
+}
+
+.change-status:active {
+  background-color: var(--green-700);
 }

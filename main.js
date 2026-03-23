@@ -59,15 +59,32 @@ function displayBook() {
   }
 }
 
+function updatePointerEvents() {
+  if (elements.form.classList.contains('hidden')) {
+    document.body.style.pointerEvents = 'auto'
+  } else {
+    document.body.style.pointerEvents = 'none'
+    elements.form.style.pointerEvents = 'auto'
+    document.querySelector('.wrapper').style.filter = 'blur(5px)'
+  }
+}
+
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('new-book')) {
+  if (e.target.closest('.new-book')) {
     elements.form.classList.toggle('hidden')
+    updatePointerEvents()
   }
 
   if (e.target.classList.contains('book-submit')) {
     e.preventDefault()
 
+    document.querySelector('.wrapper').style.filter = 'none'
+
+    elements.form.classList.toggle('hidden')
+    updatePointerEvents()
+
     addBooksToLibrary(crypto.randomUUID(), elements.titleInput.value, elements.authInput.value, elements.pagesInput.value, elements.statusCheck)
+
     displayBook()
   }
 
